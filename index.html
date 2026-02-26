@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elad Alush - DevOps Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @keyframes matrix-rain {
+            0% {
+                text-shadow: 0 0 10px #00ff00;
+                opacity: 1;
+            }
+            50% {
+                text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00;
+            }
+            100% {
+                text-shadow: 0 0 10px #00ff00;
+            }
+        }
+        
+        @keyframes glow-pulse {
+            0%, 100% {
+                text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+            }
+            50% {
+                text-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00;
+            }
+        }
+        
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                color: #00ff00;
+                text-shadow: 0 0 10px #00ff00;
+            }
+            20%, 24%, 55% {
+                color: #003300;
+                text-shadow: 0 0 5px #003300;
+            }
+        }
+        
+        body {
+            font-family: 'Space Mono', monospace;
+            line-height: 1.6;
+            color: #00ff00;
+            background: #000000;
+            background-image: 
+                linear-gradient(0deg, transparent 24%, rgba(0, 255, 0, 0.05) 25%, rgba(0, 255, 0, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 0, 0.05) 75%, rgba(0, 255, 0, 0.05) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(0, 255, 0, 0.05) 25%, rgba(0, 255, 0, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 0, 0.05) 75%, rgba(0, 255, 0, 0.05) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, transparent 0%, rgba(0, 0, 0, 0.1) 50%, transparent 100%);
+            pointer-events: none;
+            animation: flicker 0.15s infinite;
+            z-index: 1;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff00;
+            border-radius: 0;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5) inset, 0 0 40px rgba(0, 255, 0, 0.2);
+        }
+        
+        h1 {
+            color: #00ff00;
+            margin-bottom: 15px;
+            font-size: 3em;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            animation: glow-pulse 2s ease-in-out infinite;
+            letter-spacing: 3px;
+        }
+        
+        .title {
+            color: #00aa00;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+            animation: matrix-rain 3s ease-in-out infinite;
+        }
+        
+        .contact-info {
+            color: #00ff00;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .contact-info a {
+            color: #00ff00;
+            text-decoration: none;
+            margin: 0 15px;
+            border: 1px solid #00ff00;
+            padding: 5px 10px;
+            transition: all 0.3s;
+        }
+        
+        .contact-info a:hover {
+            background: #00ff00;
+            color: #000000;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+        }
+        
+        section {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff00;
+            border-radius: 0;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        }
+        
+        h2 {
+            color: #00ff00;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+            animation: glow-pulse 2.5s ease-in-out infinite;
+        }
+        
+        .about-text {
+            color: #00ff00;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .skill-box {
+            background: rgba(0, 30, 0, 0.8);
+            color: #00ff00;
+            padding: 15px;
+            border: 1px solid #00ff00;
+            border-radius: 0;
+            text-align: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+        }
+        
+        .skill-box:hover {
+            background: #00ff00;
+            color: #000000;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.8);
+            transform: scale(1.05);
+        }
+        
+        .experience-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #00aa00;
+        }
+        
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+        
+        .exp-title {
+            color: #00ff00;
+            font-weight: bold;
+            font-size: 1.1em;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .exp-company {
+            color: #00aa00;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        .exp-description {
+            color: #00ff00;
+            margin-top: 8px;
+            line-height: 1.6;
+        }
+        
+        footer {
+            text-align: center;
+            color: #00aa00;
+            padding: 20px;
+            margin-top: 30px;
+            border-top: 1px dashed #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>> Elad Alush</h1>
+            <div class="title">[ DevOps Engineer ]</div>
+            <div class="contact-info">
+                <a href="mailto:lirone@example.com">[EMAIL]</a>
+                <a href="https://linkedin.com">[LINKEDIN]</a>
+                <a href="https://github.com">[GITHUB]</a>
+            </div>
+        </header>
+        
+        <section>
+            <h2>About Me</h2>
+            <p class="about-text">
+                I'm a passionate DevOps Engineer focused on designing, implementing, and maintaining scalable infrastructure solutions. 
+                With expertise in cloud services, containerization, and continuous integration/deployment pipelines, I help organizations 
+                streamline their development workflows and achieve operational excellence.
+            </p>
+            <p class="about-text">
+                My goal is to bridge the gap between development and operations through automation, monitoring, and best practices.
+            </p>
+        </section>
+        
+        <section>
+            <h2>Core Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-box">Docker</div>
+                <div class="skill-box">Kubernetes</div>
+                <div class="skill-box">AWS</div>
+                <div class="skill-box">Azure</div>
+                <div class="skill-box">CI/CD</div>
+                <div class="skill-box">Jenkins</div>
+                <div class="skill-box">GitLab</div>
+                <div class="skill-box">Terraform</div>
+                <div class="skill-box">Linux</div>
+                <div class="skill-box">Ansible</div>
+                <div class="skill-box">Prometheus</div>
+                <div class="skill-box">ELK Stack</div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Experience</h2>
+            
+            <div class="experience-item">
+                <div class="exp-title">DevOps Engineer</div>
+                <div class="exp-company">Your Company Name</div>
+                <div class="exp-description">
+                    Managed cloud infrastructure on AWS, implemented containerized applications using Docker and Kubernetes,
+                    and automated deployment pipelines with Jenkins and GitLab CI/CD.
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="exp-title">Junior DevOps Engineer</div>
+                <div class="exp-company">Previous Company</div>
+                <div class="exp-description">
+                    Supported infrastructure monitoring and logging, assisted in infrastructure-as-code implementation with Terraform,
+                    and maintained Linux servers in production environments.
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>What I Do</h2>
+            <div class="about-text">
+                ✓ Design and deploy cloud infrastructure<br>
+                ✓ Containerize applications with Docker and orchestrate with Kubernetes<br>
+                ✓ Automate deployments and infrastructure provisioning<br>
+                ✓ Implement monitoring, logging, and alerting solutions<br>
+                ✓ Optimize system performance and reliability<br>
+                ✓ Ensure security best practices and compliance
+            </div>
+        </section>
+        
+        <footer>
+            <p>> 2026 LIRONE FITOUSSI | DevOps Engineer | Access Granted _</p>
+        </footer>
+    </div>
+</body>
+</html>
