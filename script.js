@@ -2,18 +2,7 @@
 
 // Theme Toggle Functionality
 function initializeTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'dark-mode';
-    document.body.className = savedTheme;
-    updateThemeButton();
-}
-
-function toggleTheme() {
-    const currentTheme = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
-    const newTheme = currentTheme === 'dark-mode' ? 'light-mode' : 'dark-mode';
-    
-    document.body.classList.remove(currentTheme);
-    document.body.classList.add(newTheme);
-    localStorage.setItem('theme', newTheme);
+    conme', newTheme);
     updateThemeButton();
 }
 
